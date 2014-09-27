@@ -26,16 +26,13 @@ Filter.classifier = function(track_terms, filter_terms) {
 
 function matchedTerm(string, terms, flag) {
   if (!terms) return undefined;
-  debugger;
-
-  for(var i=0; i<terms.length; i++){
-    var term = terms[i];
-    if(string.indexOf(term) > -1){
-      return flag;
-    }
+  
+  var re = new RegExp(terms.join('|'), 'i');
+  if(string.search(re) > -1){
+    return flag;
+  }else{
+    return undefined;    
   }
-  //no matches in those terms
-  return undefined;
 }
 
 module.exports = Filter;
