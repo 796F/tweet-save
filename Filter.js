@@ -22,6 +22,7 @@ Filter.classifier = function(track_terms, filter_terms) {
 
 function matchedTerm(string, terms, flag) {
   if (!terms) return undefined;
+  debugger;
 
   for(var i=0; i<terms.length; i++){
     var term = terms[i];
@@ -30,7 +31,7 @@ function matchedTerm(string, terms, flag) {
     }
   }
   //no matches in those terms
-  return 'undefined';
+  return undefined;
 }
 
 module.exports = Filter;
