@@ -5,6 +5,7 @@ Filter = {}
 Filter.classifier = function(track_terms, filter_terms) {
   //create a filter which classifies a tweet based on terms
   return function(tweet) {
+    debugger;
     var string = JSON.stringify(tweet);
 
     for(var flag in track_terms){
@@ -13,10 +14,13 @@ Filter.classifier = function(track_terms, filter_terms) {
       if(matchedTerm(string, no_keep)){
         return 'UNWANTED';
       }else{
-        return matchedTerm(string, keep, flag) || 'UNWANTED';
+        var match = matchedTerm(string, keep, flag);
+        if(match) {
+          return match;
+        }
       } 
-
     }
+    return 'UNWANTED'
   }
 }
 
