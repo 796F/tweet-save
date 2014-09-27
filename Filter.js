@@ -11,25 +11,24 @@ Filter.classifier = function(track_terms, filter_terms) {
     for(var flag in track_terms){
       var keep = track_terms[flag];
       var no_keep = filter_terms[flag];
+      
       if(matchedTerm(string, no_keep)){
         return 'UNWANTED';
-      }else{
-        var match = matchedTerm(string, keep, flag);
-        if(match) {
-          return match;
-        }
-      } 
+      }else if(matchedTerm(string, keep)){
+        return flag;
+      }
     }
     return 'UNWANTED'
   }
 }
 
 function matchedTerm(string, terms, flag) {
-  if (!terms) return undefined;
-  
+  if (!terms) 
+    return undefined;
+
   var re = new RegExp(terms.join('|'), 'i');
   if(string.search(re) > -1){
-    return flag;
+    return true;
   }else{
     return undefined;    
   }
