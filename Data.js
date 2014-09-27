@@ -2,7 +2,7 @@ var config = require('./config.js');
 var knex = require('knex')({
   dialect: 'mysql',
   connection: config.mysql,
-  debug: true
+  debug: false
 });
 
 Data = {}

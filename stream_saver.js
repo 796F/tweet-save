@@ -7,12 +7,31 @@ var TRACK_TERMS = {
   famous: ['befamous', 'famo.us', 'famo-us'],
   famous_angular: ['famous-angular'],
   ionic: ['ionic framework', 'ionic js', 'ionicjs', 'ionic.js', 'ionicframework', '#ionicjs'],
-  meteor: ['meteorjs', 'Meteor JS', 'meteor.js', '@meteorjs']
+  meteor: ['meteorjs', 'Meteor JS', 'meteor.js', '@meteorjs'],
+  backbone: ['Backbone.js', 'backbone js', '@backbone_js', 'backbonejs'],
+  bmarrionette: ['backbone marionette', 'backbone.marionette', '@marionettejs'],
+  d3: ['D3.js', '@mbostock'],
+  ember: ['ember.js', 'ember js', '@emberjs'],
+  enyo: ['enyojs', 'enyo.js', '@enyojs'],
+  react: ['facebook react', 'react.js', 'react js', '@reactjs'],
+  hammer: ['hammer.js'],
+  jquerymobile: ['jQuery Mobile', '@jquerymobile'],
+  jquery : ['@jquery', '#jquery'],
+  kendo: ['kendo ui', '@kendoui'],
+  knockout: ['knockoutjs', 'knockout js', 'knockout.js', '@knockout_js'],
+  polymer: ['polymerjs', '@polymer'],
+  sencha: ['sencha', '@sencha'],
+  threejs: ['Three.js', 'threejs', 'Three JS', '@Learningthreejs'],
+  titanium: ['@appcel_titans', 'titaniumjs', 'titanium js', 'appcelerator']
 }
 
 var FILTER_TERMS = {
   ionic: ['hindawi', 'plos', 'legal'],
-  meteor: ['meteorological', 'hanged man\'s rose', 'kreyos', 'dee open source', 'mugenguild']
+  meteor: ['meteorological', 'hanged man\'s rose', 'kreyos', 'dee open source', 'mugenguild'],
+  backbone: ['backbone media'],
+  d3: ['D3 Technologies'],
+  jquery: TRACK_TERMS.jquerymobile,
+  titanium: ['neurosurgeon', 'neurosurgery']
 }
 
 var classifier = require('./Filter.js').classifier(TRACK_TERMS, FILTER_TERMS);

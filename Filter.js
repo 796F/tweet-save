@@ -6,26 +6,31 @@ Filter.classifier = function(track_terms, filter_terms) {
   //create a filter which classifies a tweet based on terms
   return function(tweet) {
     var string = JSON.stringify(tweet);
-    debugger;
-    if(matchedTerm(string, filter_terms)){
-      return 'UNWANTED';
-    }else{
-      return matchedTerm(string, track_terms) || 'UNWANTED';
-    } 
+
+    for(var flag in track_terms){
+      var keep = track_terms[flag];
+      var no_keep = filter_terms[flag];
+      if(matchedTerm(string, no_keep)){
+        return 'UNWANTED';
+      }else{
+        return matchedTerm(string, keep, flag) || 'UNWANTED';
+      } 
+
+    }
   }
 }
 
-function matchedTerm(string, terms) {
-  for(var organization in terms){
-    for(var i=0; i<terms[organization].length; i++){
-      var term = terms[organization][i];
-      if(string.indexOf(term) > -1){
-        return organization;
-      }
+function matchedTerm(string, terms, flag) {
+  if (!terms) return undefined;
+
+  for(var i=0; i<terms.length; i++){
+    var term = terms[i];
+    if(string.indexOf(term) > -1){
+      return flag;
     }
   }
   //no matches in those terms
-  return undefined;
+  return 'undefined';
 }
 
 module.exports = Filter;
