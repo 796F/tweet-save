@@ -3,16 +3,16 @@ var Data = require('./Data.js');
 
 var TRACK_TERMS = {
   angular: ['angularjs', 'angular.js', '#angularjs', 'angular JS'],
-  bootstrap: ['Twitter Bootstrap', 'twbootstrap'],
+  bootstrap: ['Twitter Bootstrap', 'twbootstrap', '#bootstrap'],
   famous: ['befamous', 'famo.us', 'famo-us'],
   famous_angular: ['famous-angular'],
-  ionic: ['ionic framework', 'ionic js', 'ionicjs', 'ionic.js', 'ionicframework'],
-  meteor: ['meteorjs', 'Meteor JS', 'meteor.js']
+  ionic: ['ionic framework', 'ionic js', 'ionicjs', 'ionic.js', 'ionicframework', '#ionicjs'],
+  meteor: ['meteorjs', 'Meteor JS', 'meteor.js', '@meteorjs']
 }
 
 var FILTER_TERMS = {
-  ionic: ['hindawi', 'plos'],
-  meteor: []
+  ionic: ['hindawi', 'plos', 'legal'],
+  meteor: ['meteorological', 'hanged man\'s rose', 'kreyos', 'dee open source', 'mugenguild']
 }
 
 var classifier = require('./Filter.js').classifier(TRACK_TERMS, FILTER_TERMS);
@@ -38,9 +38,6 @@ function _handleError(err){
 
 /*
 
-NOT ("plos" OR hindawi OR "framework for understanding" OR "legal framework")
-
-at_mentions:meteorjs OR (Meteor AND ("open-source" OR "open source" OR "web app")) OR meteorjs OR raw:meteor.js OR meteorJS
-NOT (meteorological OR "meteor society" OR "hanged man's rose" OR kreyos OR "dee open source" OR mugenguild)
+NOT ( OR "meteor society" OR "" OR kreyos OR "dee open source" OR mugenguild)
 
 */
