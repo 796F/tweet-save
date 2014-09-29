@@ -6,7 +6,7 @@ var TRACK_TERMS = {
   bootstrap: ['Twitter Bootstrap', 'twbootstrap', '#bootstrap'],
   famous: ['befamous', 'famo.us', 'famo-us'],
   famous_angular: ['famous-angular'],
-  ionic: ['ionic framework', 'ionic js', 'ionicjs', 'ionic.js', 'ionicframework', '#ionicjs'],
+  ionic: ['ionic framework', 'ionic js', 'ionicjs', 'ionic.js', 'ionicframework', '#ionicjs', '@ionicframework', 'ionic'],
   meteor: ['meteorjs', 'Meteor JS', 'meteor.js', '@meteorjs'],
   backbone: ['Backbone.js', 'backbone js', '@backbone_js', 'backbonejs'],
   bmarrionette: ['backbone marionette', 'backbone.marionette', '@marionettejs'],
