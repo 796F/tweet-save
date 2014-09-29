@@ -21,7 +21,7 @@ _getYesterdayMentions().then(function(mentions){
 
     var mailOptions = {
         from: 'Famo.us Tweet Bot <xia.umd@gmail.com>', // sender address
-        to: 'xia.umd@gmail.com', // list of receivers
+        to: 'xia.umd@gmail.com, jeanne@famo.us', // list of receivers
         subject: 'Twitter Mentions ' + (today.getMonth()+1) + "/" + (today.getDate()-2),
         html: output // html body
     };
