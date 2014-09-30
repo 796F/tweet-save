@@ -23,7 +23,7 @@ GetYesterdayMentions().then(function(mentions){
 
     var mailOptions = {
         from: 'Famo.us Tweet Bot <xia.umd@gmail.com>', // sender address
-        to: 'xia.umd@gmail.com, marketing@famo.us', // list of receivers
+        to: 'marketing@famo.us', // list of receivers
         subject: 'Twitter Mentions ' + _yesterdayDate(),
         html: output // html body
     };
