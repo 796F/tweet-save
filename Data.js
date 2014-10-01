@@ -16,6 +16,9 @@ FIELDS_KEEP = {
   'userId', 'flag']
 }
 
+var flags = ['angular','bootstrap','famous','famous_angular','ionic','meteor','backbone','bmarrionette',
+'d3','ember','enyo','react','hammer','jquerymobile','jquery','kendo','knockout','polymer','sencha','threejs','titanium'];
+
 Data.saveUser = function (tweet){
   return knex('users').insert(_pickFields(tweet.user, FIELDS_KEEP.user))
   .then(function(id){
@@ -32,9 +35,14 @@ Data.saveTweet = function (tweet){
   tweet.entities = tweet.entities.toString();
 
   var new_tweet = _pickFields(tweet, FIELDS_KEEP.tweet);
-  debugger;
   return knex('tweets').insert(new_tweet).then(function(data){
-    debugger;
+  });
+}
+
+Data.getAllTweets = function () {
+  //retrieve tweets for showing.  
+  return knex('tweets').select().then(function(data){
+    return _formatStream(data, flags);
   });
 }
 
@@ -45,6 +53,20 @@ _pickFields = function (object, whitelist) {
     newObj[fieldName] = object[fieldName];
   }
   return newObj;
+}
+
+_formatStream = function (data, stream_names) {
+  
+  var data_streams = {};
+  for(var i=0; i<data.length; i++){
+    var record = data[i];
+    if(data_streams[record.flag] == undefined){
+      data_streams[record.flag] = [];
+    }
+    data_streams[record.flag].push(record.created_at);
+  }
+  
+  return data_streams
 }
 
 module.exports = Data;
