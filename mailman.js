@@ -64,7 +64,7 @@ function GetYesterdayMentions() {
 function _yesterdayDate(){
     var today = new Date();
     //javascript has date values 0 indexed lol.
-    return (today.getMonth()+1) + "/" + (today.getDate()-2);
+    return (today.getMonth()+1) + "/" + (today.getDate());
 }
 
 function _countMentions(framework, start, end) {
