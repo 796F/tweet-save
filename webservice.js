@@ -19,7 +19,7 @@ server.listen(port ,ip_addr, function(){
     console.log('%s ws now listening on %s ', server.name , server.url);
 });
 
-// server.get({ path : '/data/:repo_name' } , API.dataForRepo);
+server.get({ path : '/test' } , API.test);
 server.post({ path : '/tweetVolume'}, API.tweetVolume);
 
 server.get({ path: '/.*'}, restify.serveStatic({

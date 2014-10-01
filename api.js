@@ -5,12 +5,8 @@ API = {}
 
 API.test = function (req, res , next){
   res.setHeader('Access-Control-Allow-Origin','*');
-  var streams_wanted = ['repository_watchers', 'repository_open_issues', 'repository_forks'];
-  Data.getDataByParams([req.params.repository_name], [req.params.owner], streams_wanted)
-  .then(function(data){
-    res.send(200, data);
-    return next();
-  });
+  res.send(200, 'hello world');
+  return next();
 }
 
 API.tweetVolume = function (req, res , next){
