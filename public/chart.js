@@ -13,6 +13,7 @@ MAIN.init = function() {
           data: data[target_name]
         });
       }
+
       $('#chart').highcharts({
         chart: {
           type: 'spline',
@@ -21,6 +22,16 @@ MAIN.init = function() {
         title: {
           text: 'hourly tweet volume'
         },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                month: '%e. %b',
+                year: '%b'
+            },
+            title: {
+                text: 'Date'
+            }
+        },
         plotOptions : {
           series : {
             cursor : 'pointer',
@@ -28,7 +39,9 @@ MAIN.init = function() {
               click: function(ev){
                 
               }
-            }
+            },
+            pointStart: data.start_time*1000 ,
+            pointInterval: 3600 * 1000
           }
         },
         series: series
