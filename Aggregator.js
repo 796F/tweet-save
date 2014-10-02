@@ -2,7 +2,7 @@
 
 Aggregator = {};
 
-var MS_PER_HOUR = 3600;
+var S_PER_HOUR = 3600;
 
 
 
@@ -12,7 +12,7 @@ Aggregator.tweetFrequency = function (all_tweets, T) {
   for(var key in all_tweets){
     var data = all_tweets[key];
 
-    var T_IN_MS = T * MS_PER_HOUR;
+    var T_IN_S = T * S_PER_HOUR;
     var start_time = undefined;
     var counter = 0;
     for(var i in data){
@@ -20,8 +20,8 @@ Aggregator.tweetFrequency = function (all_tweets, T) {
         //first object, set this as our starting window.  
         start_time = data[i];
         results.start_time = start_time;
-      }else if(data[i] > start_time + T_IN_MS){
-        start_time = start_time + T_IN_MS;
+      }else if(data[i] > start_time + T_IN_S){
+        start_time = start_time + T_IN_S;
         if(results[key] == undefined) {
           results[key] = [];
         }

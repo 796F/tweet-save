@@ -40,8 +40,8 @@ MAIN.init = function() {
                 
               }
             },
-            pointStart: data.start_time*1000 ,
-            pointInterval: 3600 * 1000
+            pointStart: data.start_time*1000 - 203760*1000, //ms of the date.  
+            pointInterval: 3600 * 1000    //hourly interval
           }
         },
         series: series
