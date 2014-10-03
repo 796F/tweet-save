@@ -20,24 +20,31 @@ var flags = ['angular','bootstrap','famous','famous_angular','ionic','meteor','b
 'd3','ember','enyo','react','hammer','jquerymobile','jquery','kendo','knockout','polymer','sencha','threejs','titanium'];
 
 Data.saveUser = function (tweet){
-  return knex('users').insert(_pickFields(tweet.user, FIELDS_KEEP.user))
+  debugger;
+  var picked = _pickFields(tweet.user, FIELDS_KEEP.user);
+  return knex('users').insert(picked)
   .then(function(id){
     //object safely stored
+    debugger;
   }, function(error) {
+    debugger;
     //error occured, duplicate entry?
     console.log('SAVE USER ERROR', tweet);
   });
 }
 
 Data.saveTweet = function (tweet){
+  debugger;
   tweet.userId = tweet.user.id;
   //convert string to timestamps
-  tweet.created_at = Date.parse(tweet.created_at) * 0.001;
+  tweet.created_at = Math.floor(tweet.timestamp_ms * 0.001);  
   tweet.entities = tweet.entities.toString();
 
   var new_tweet = _pickFields(tweet, FIELDS_KEEP.tweet);
+  debugger;
   return knex('tweets').insert(new_tweet).then(function(data){
   }, function(error){
+    debugger;
     console.log('SAVE TWEET ERROR', tweet);
   });
 }
