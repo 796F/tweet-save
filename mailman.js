@@ -21,12 +21,7 @@ GetYesterdayMentions().then(function(mentions){
     }
     output += '</table>'
 
-    var mailOptions = {
-        from: 'Famo.us Tweet Bot <xia.umd@gmail.com>', // sender address
-        to: 'marketing@famo.us', // list of receivers
-        subject: 'Twitter Mentions ' + _yesterdayDate(),
-        html: output // html body
-    };
+    var mailOptions = config.mailman;
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info){
@@ -54,7 +49,6 @@ function GetYesterdayMentions() {
     .then(function(targets){
         var promises = [];
         for (var index in targets){
-            debugger;
             promises.push(_countMentions(targets[index].flag, start, end));
         }
         return Q.all(promises);
@@ -64,17 +58,15 @@ function GetYesterdayMentions() {
 function _yesterdayDate(){
     var today = new Date();
     //javascript has date values 0 indexed lol.
-    return (today.getMonth()+1) + "/" + (today.getDate());
+    return (today.getMonth()+1) + "/" + (today.getDate()-1);
 }
 
 function _countMentions(framework, start, end) {
-    debugger;
     return knex('tweets').count('*')
     .where('created_at', '>', start)
     .where('created_at', '<', end)
     .where('flag', '=', framework)
     .then(function(row){
-        debugger;
         return {
             count: row[0]['count(*)'],
             framework: framework

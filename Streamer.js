@@ -1,12 +1,7 @@
 var Twitter = require('node-tweet-stream');
 var Q = require('q');
-
-var twit = new Twitter({
-  consumer_key: 'yGRbE672HgPJUdkNHcFEYfy83',
-  consumer_secret: 'AammKw36WGzDFKSFQU5XRr87LkAL0XqtXk6V8kEdz9XEpNcC4I',
-  token: '395097148-ssarpIgUjGsn9ylzsPapkzqyatPXpESRKMype0ZB',
-  token_secret: 'hmrPFguIGXl4u9UMuk2m8xE6WZUeHpkKPnOV1K7G9wBbx'
-});
+var config = require('./config');
+var twit = new Twitter(config.twitter);
 
 var Streamer = {};
 

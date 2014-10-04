@@ -25,8 +25,10 @@ Data.saveUser = function (tweet){
     //object safely stored
     return id;
   }, function(error) {
-    //error occured, duplicate entry?
-    console.log('SAVE USER ERROR', tweet, error);
+    if(error.toString().indexOf('ER_DUP_ENTRY:')<0) {
+      //not a duplicate entry.  
+      console.log('SAVE USER ERROR', tweet, error);
+    }
   });
 }
 
@@ -41,7 +43,10 @@ Data.saveTweet = function (tweet){
     //safely stored
     return id;
   }, function(error){
-    console.log('SAVE TWEET ERROR', tweet, error);
+    if(error.toString().indexOf('ER_DUP_ENTRY:')<0) {
+      //not a duplicate entry.
+      console.log('SAVE TWEET ERROR', tweet, error);
+    }
   });
 }
 
