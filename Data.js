@@ -11,7 +11,7 @@ FIELDS_KEEP = {
   user: ['id', 'name', 'screen_name', 'location', 'url', 'description', 'protected', 'verified', 'followers_count', 
   'listed_count', 'favourites_count', 'statuses_count', 'utc_offset', 'time_zone', 'geo_enabled', 'lang',
   'contributors_enabled', 'is_translator', 'default_profile', 'friends_count'],
-  tweet: ['id', 'text', 'source', 'truncated', 'coordinates', 'contributors', 'retweet_count',
+  tweet: ['id', 'text', 'source', 'truncated', 'contributors', 'retweet_count',
   'favorite_count', 'entities', 'created_at', 'favorited', 'retweeted', 'filter_level', 'possibly_sensitive', 'lang', 
   'userId', 'flag']
 }
