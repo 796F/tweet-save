@@ -40,19 +40,27 @@ Streamer.run(TRACK_TERMS)
 .then(_handleResolve, _handleError, _handleTweet);
 
 function _handleTweet(tweet){
-  tweet.flag = classifier(tweet);
+  console.log('notify of tweet at', new Date());
+  
   //save the tweet with the associated flag.
-  Data.saveUser(tweet).then(function() {
-    Data.saveTweet(tweet);
-  });
+  try{
+    tweet.flag = classifier(tweet);
+    Data.saveUser(tweet).then(function() {
+      Data.saveTweet(tweet);
+    });
+  }catch(err){
+    console.log('error in classifying and saving the tweet.')
+  }
+  
 }
 
 function _handleResolve(value){
   //should never be called.  
+  console.log('weird, the promise resolved.', value);
 }
 
 function _handleError(err){
-  console.log(err);
+  console.log('error from promise, something in streamer rejected', err);
 }
 
 /*
@@ -60,3 +68,4 @@ function _handleError(err){
 NOT ( OR "meteor society" OR "" OR kreyos OR "dee open source" OR mugenguild)
 
 */
+

@@ -22,11 +22,12 @@ Streamer.run = function(terms) {
 
     twit.on('tweet', function (tweet) {
       //notify whenever tweet received
+      console.log('received tweet at', new Date());
       notify(tweet);
     });
 
     twit.on('error', function (err) {
-      //reject promise with error!
+      console.log('streamer error at', new Date());
       reject(err);
     });
 

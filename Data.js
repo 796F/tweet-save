@@ -20,32 +20,28 @@ var flags = ['angular','bootstrap','famous','famous_angular','ionic','meteor','b
 'd3','ember','enyo','react','hammer','jquerymobile','jquery','kendo','knockout','polymer','sencha','threejs','titanium'];
 
 Data.saveUser = function (tweet){
-  debugger;
-  var picked = _pickFields(tweet.user, FIELDS_KEEP.user);
-  return knex('users').insert(picked)
+  return knex('users').insert(_pickFields(tweet.user, FIELDS_KEEP.user))
   .then(function(id){
     //object safely stored
-    debugger;
+    return id;
   }, function(error) {
-    debugger;
     //error occured, duplicate entry?
-    console.log('SAVE USER ERROR', tweet);
+    console.log('SAVE USER ERROR', tweet, error);
   });
 }
 
 Data.saveTweet = function (tweet){
-  debugger;
   tweet.userId = tweet.user.id;
   //convert string to timestamps
   tweet.created_at = Math.floor(tweet.timestamp_ms * 0.001);  
-  tweet.entities = tweet.entities.toString();
-
-  var new_tweet = _pickFields(tweet, FIELDS_KEEP.tweet);
-  debugger;
-  return knex('tweets').insert(new_tweet).then(function(data){
+  tweet.entities = JSON.stringify(tweet.entities);
+  
+  return knex('tweets').insert(_pickFields(tweet, FIELDS_KEEP.tweet))
+  .then(function(id){
+    //safely stored
+    return id;
   }, function(error){
-    debugger;
-    console.log('SAVE TWEET ERROR', tweet);
+    console.log('SAVE TWEET ERROR', tweet, error);
   });
 }
 

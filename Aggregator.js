@@ -10,7 +10,7 @@ Aggregator.tweetFrequency = function (all_tweets, T) {
   //given collection of time-stamp streams, return frequency over period T days
   var results = {};
   for(var key in all_tweets){
-    var data = all_tweets[key];
+    var data = all_tweets[key].sort();
 
     var T_IN_S = T * S_PER_HOUR;
     var start_time = undefined;
