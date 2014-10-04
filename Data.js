@@ -27,7 +27,7 @@ Data.saveUser = function (tweet){
   }, function(error) {
     if(error.toString().indexOf('ER_DUP_ENTRY:')<0) {
       //not a duplicate entry.  
-      console.log('SAVE USER ERROR', tweet, error);
+      console.log('SAVE USER ERROR', _pickFields(tweet.user, FIELDS_KEEP.user), error);
     }
   });
 }
@@ -45,7 +45,12 @@ Data.saveTweet = function (tweet){
   }, function(error){
     if(error.toString().indexOf('ER_DUP_ENTRY:')<0) {
       //not a duplicate entry.
-      console.log('SAVE TWEET ERROR', tweet, error);
+      tweet.userId = tweet.user.id;
+      //convert string to timestamps
+      tweet.created_at = Math.floor(tweet.timestamp_ms * 0.001);  
+      tweet.entities = JSON.stringify(tweet.entities);
+    
+      console.log('SAVE TWEET ERROR', tweet, _pickFields(tweet, FIELDS_KEEP.tweet), error);
     }
   });
 }
