@@ -22,6 +22,7 @@ GetYesterdayMentions().then(function(mentions){
     output += '</table>'
 
     var mailOptions = config.mailman;
+    mailOptions.subject = 'Twitter Mentions ' + _yesterdayDate(),
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info){
