@@ -1,0 +1,4 @@
+# cron job for mailing list
+0 16 * * * /usr/local/bin/node /home/ec2-user/code/tweet-save/mailman.js
+# cron job for restarting stream-saver.js
+0 * * * * /usr/local/bin/node /home/ec2-user/code/tweet-save/stream_saver.js

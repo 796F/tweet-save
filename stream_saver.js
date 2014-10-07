@@ -63,6 +63,10 @@ function _handleError(err){
   console.log('error from promise, something in streamer rejected', err);
 }
 
+setTimeout(function(){
+  process.exit();
+}, 3600000)
+
 /*
 
 NOT ( OR "meteor society" OR "" OR kreyos OR "dee open source" OR mugenguild)
