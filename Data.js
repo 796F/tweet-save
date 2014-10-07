@@ -7,6 +7,8 @@ var knex = require('knex')({
 
 Data = {}
 
+TEN_DAYS_IN_S = 10 * 24 * 60 * 60;
+
 FIELDS_KEEP = {
   user: ['id', 'name', 'screen_name', 'location', 'url', 'description', 'protected', 'verified', 'followers_count', 
   'listed_count', 'favourites_count', 'statuses_count', 'utc_offset', 'time_zone', 'geo_enabled', 'lang',
@@ -56,8 +58,10 @@ Data.saveTweet = function (tweet){
 }
 
 Data.getAllTweets = function () {
-  //retrieve tweets for showing.  
-  return knex('tweets').select().then(function(data){
+  //retrieve tweets for last 10 days.
+  return knex('tweets').select()
+  .where('created_at', '>', Date.now() - TEN_DAYS_IN_S)
+  .then(function(data){
     return _formatStream(data, flags);
   });
 }
