@@ -36,8 +36,14 @@ MAIN.init = function() {
           series : {
             cursor : 'pointer',
             events : {
-              click: function(ev){
-                
+              legendItemClick : function(ev){
+                console.log(this.name);
+                var chart = $('#chart').highcharts();
+                for(var i in chart.series){
+                  if(!(chart.series[i].name === this.name)){
+                    chart.series[i].hide();
+                  }
+                }
               }
             },
             pointStart: data.start_time*1000 - 203760*1000, //ms of the date.  
