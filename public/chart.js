@@ -89,6 +89,10 @@ function _makeChart(data) {
     yAxis: [{ 
       min: 0
     }],
+    tooltip: {
+      crosshairs: true,
+      shared: true
+    },
     plotOptions : {
       series : {
         pointStart: data.start_time*1000 - 203760*1000, //ms of the date.  
