@@ -25,7 +25,7 @@ Aggregator.tweetFrequency = function (all_tweets, T) {
         if(results[key] == undefined) {
           results[key] = [];
         }
-        results[key].push(counter);
+        results[key].push(counter-1);
         counter = 0;
       }
       counter++;

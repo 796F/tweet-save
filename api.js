@@ -13,7 +13,7 @@ API.tweetVolume = function (req, res , next){
   var period = req.params.period
   Data.getAllTweets()
   .then(function(tweets){ 
-    var plottable_data = Aggregator.tweetFrequency(tweets, 1);
+    var plottable_data = Aggregator.tweetFrequency(tweets, period);
     res.send(200, plottable_data);
     return next();
   });

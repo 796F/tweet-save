@@ -2,17 +2,49 @@
 <html>
 <head>
   <title>Github Charts</title>
+
+
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
   <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
   <script type="text/javascript" src="chart.js"></script>
+  <style type="text/css">
+    div.control_group {
+      padding: 10px;
+    }
+    div.control_object {
+      display: inline-block;
+    }
+  </style>
 </head>
 
 <body>
 
 <div id='main_container'>
-  <div id="chart" style="min-width: 310px; height: 1000px; margin: 0 auto"></div>
-</div>
+
+  <div class="control_group">
+    <div class="control_object">  
+      <div class="btn-group">
+        <button type="button" class="granularity_button btn btn-default">Hour</button>
+        <button type="button" class="granularity_button btn btn-default">Day</button>
+        <button type="button" class="granularity_button btn btn-default">Week</button>
+        <button type="button" class="granularity_button btn btn-default">Month</button>
+      </div>
+    </div>
+
+    <div class="control_object">  
+      <button id="hide_series_button" type="button" class="btn btn-primary">Hide All Series</button>
+    </div>
+  </div>
+
+  </div>
+    <div id="chart" style="margin: 0 auto"></div>
+  </div>
 
 </body>
 </html>
