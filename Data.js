@@ -60,7 +60,7 @@ Data.saveTweet = function (tweet){
 Data.getAllTweets = function () {
   //retrieve tweets for last 10 days.
   return knex('tweets').select()
-  .where('created_at', '>', Date.now() - TEN_DAYS_IN_S)
+  .where('created_at', '>', Math.floor(Date.now() * 0.001) - TEN_DAYS_IN_S)
   .then(function(data){
     return _formatStream(data, flags);
   });
