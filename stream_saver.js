@@ -26,7 +26,7 @@ var TRACK_TERMS = {
 }
 
 var FILTER_TERMS = {
-  ionic: ['hindawi', 'plos', 'legal'],
+  ionic: ['hindawi', 'plos', 'legal', 'beauty', 'bond', 'muhammadzamiluddinkhan.com'],
   meteor: ['meteorological', 'hanged man\'s rose', 'kreyos', 'dee open source', 'mugenguild'],
   backbone: ['backbone media'],
   d3: ['D3 Technologies'],
