@@ -46,8 +46,8 @@ function _handleTweet(tweet){
   try{
     tweet.flag = classifier(tweet);
     Data.saveUser(tweet).then(function() {
-      Data.saveTweet(tweet);
-    });
+      Data.saveTweet(tweet).then(console.log, console.log, console.log);
+    }, console.log, console.log);
   }catch(err){
     console.log('error in classifying and saving the tweet.')
   }
