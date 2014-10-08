@@ -19,7 +19,7 @@ MAIN.toggleAllSeries = function(button) {
 
 MAIN.post = function (period) {
   $.post("tweetVolume", { period : period }, function(data) {
-    _makeChart(data);
+    _makeChart(data, period);
   });
 }
 
@@ -67,7 +67,7 @@ $(window).resize(function() {
 
 /* PRIVATE */
 
-function _makeChart(data) {
+function _makeChart(data, period) {
   $('#chart').highcharts({
     chart: {
       type: 'spline',
@@ -96,7 +96,7 @@ function _makeChart(data) {
     plotOptions : {
       series : {
         pointStart: data.start_time*1000 - 203760*1000, //ms of the date.  
-        pointInterval: 3600 * 1000 //hourly interval
+        pointInterval: period * 60 * 60 * 1000 //hourly interval
       }
     },
     series: _convertData(data)
