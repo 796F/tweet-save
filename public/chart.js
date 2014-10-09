@@ -52,7 +52,7 @@ MAIN.init = function() {
   });
 
   $.post("tweetVolume", { period : 1 }, function(data) {
-      _makeChart(data);
+      _makeChart(data, 1);
       _adjustSize();
   });
 }
@@ -68,13 +68,30 @@ $(window).resize(function() {
 /* PRIVATE */
 
 function _makeChart(data, period) {
-  $('#chart').highcharts({
+  $('#chart').highcharts('StockChart', {
     chart: {
       type: 'spline',
       zoomType: 'x',
     },
+    rangeSelector : {
+      selected : 2,
+      buttons: [
+        {type: 'day', count: 1, text: '1d'},
+        {type: 'day', count: 2, text: '2d'},
+        {type: 'day', count: 4, text: '4d'},
+        {type: 'week', count: 1, text: '1w'},
+        {type: 'all', text: 'All'}
+      ]
+    },
     title: {
       text: 'Tweet Volume'
+    },
+    legend: {
+      enabled: true,
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'top',
+      y : 60
     },
     xAxis: {
         type: 'datetime',

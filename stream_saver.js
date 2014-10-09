@@ -4,7 +4,7 @@ var Data = require('./Data.js');
 var TRACK_TERMS = {
   angular: ['angularjs', 'angular.js', '#angularjs', 'angular JS'],
   bootstrap: ['Twitter Bootstrap', 'twbootstrap', '#bootstrap'],
-  famous: ['befamous', 'famo.us', 'famo-us'],
+  famous: ['befamous', 'famo.us', 'famo-us', '#Famo.us', 'famo us'],
   famous_angular: ['famous-angular'],
   ionic: ['ionic framework', 'ionic js', 'ionicjs', 'ionic.js', 'ionicframework', '#ionicjs', '@ionicframework', 'ionic'],
   meteor: ['meteorjs', 'Meteor JS', 'meteor.js', '@meteorjs'],
