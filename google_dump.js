@@ -6,16 +6,34 @@ var knex = require('knex')({
   debug: false
 });
 
-getAll().then(function())
+var map = {}
+
+getAll().then(function(){
+  for(var framework in map) {
+    var array = map[framework];
+    array.sort(function(a, b) {
+      return a.start > b.start;
+    });
+    var output = framework + ", ";
+    for(var i=0; i<array.length; i++) {
+      output += array[i].count;
+      output += array[i].start;
+      output += ", ";
+    }
+    console.log(output);
+  }
+
+
+});
 
 function getAll() {
-  for(var curr = 28; curr<29; curr++) {
-      var start = new Date(2014, 8, curr, 1).getTime();
-      var end = new Date(2014, 8, curr+1, 1).getTime();
-      getAllForDay().then(function(data) {
-        console.log(data);
-      });
+  var promises = []
+  for(var curr = 28; curr<66; curr++) {
+      var start = new Date(2014, 8, curr, 1).getTime() * 0.001;
+      var end = new Date(2014, 8, curr+1, 1).getTime() * 0.001;
+      promises.push(getAllForDay(start, end))
   }    
+  return Q.all(promises);
 }
 
 function getAllForDay(start, end) {
@@ -36,9 +54,12 @@ function _countMentions(framework, start, end) {
     .where('created_at', '<', end)
     .where('flag', '=', framework)
     .then(function(row){
-        return {
-            count: row[0]['count(*)'],
-            framework: framework
-        }
+      if(!map[framework]) map[framework] = [];
+      map[framework].push({start: start, count: row[0]['count(*)'] });
+        
+      return {
+          count: row[0]['count(*)'],
+          framework: framework
+      }
     });
 }
