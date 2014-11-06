@@ -11,13 +11,13 @@ var map = {}
 getAll().then(function(){
   for(var framework in map) {
     var array = map[framework];
-    array.sort(function(a, b) {
+    var test = array.sort(function(a, b) {
       return a.start > b.start;
     });
-    var output = framework + ", ";
-    for(var i=0; i<array.length; i++) {
-      output += array[i].count;
-      output += array[i].start;
+
+    output = framework + ', ';
+    for(var i=0; i<test.length; i++) {
+      output += test[i].count;
       output += ", ";
     }
     console.log(output);
@@ -55,6 +55,7 @@ function _countMentions(framework, start, end) {
     .where('flag', '=', framework)
     .then(function(row){
       if(!map[framework]) map[framework] = [];
+      
       map[framework].push({start: start, count: row[0]['count(*)'] });
         
       return {
